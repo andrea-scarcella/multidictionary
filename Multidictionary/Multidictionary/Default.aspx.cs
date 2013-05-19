@@ -16,10 +16,8 @@ namespace Multidictionary
         private string dictionaryUrl = "http://www.vandale.nl";
         private IEnumerable<HtmlNode> csslink;
 
-        protected void Page_Init(object sender, EventArgs e)
-        {
 
-        }
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             //your code
@@ -36,6 +34,7 @@ namespace Multidictionary
                 cssLink.Href = dictionaryUrl + csslink.FirstOrDefault().Attributes["href"].Value;//"path to CSS";
                 cssLink.Attributes["type"] = "text/css";
                 cssLink.Attributes["media"] = "all";
+                cssLink.Attributes.Add("rel", "stylesheet");//without this attribute it does not work...
                 hdr.Controls.Add(cssLink);
             }
         }
