@@ -5,12 +5,13 @@
 <head runat="server">
     <title></title>
     <asp:PlaceHolder runat="server" id="hdr"></asp:PlaceHolder>
+
+    <link href="StyleSheet1.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <h3>
-            Enter URL and get contents of the page</h3>
+        <h2>VanDale online woordenboek frontend</h2>
         <%--<asp:textbox id="TextBoxURL" runat="server" height="20px" width="250px" text="http://www.vandale.nl/opzoeken?pattern=kat&lang=nn">--%>
         <asp:textbox id="TextBoxURL" runat="server" height="20px" width="250px" text="kat">
         </asp:textbox>
