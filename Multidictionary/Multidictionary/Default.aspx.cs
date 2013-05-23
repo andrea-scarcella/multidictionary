@@ -8,6 +8,7 @@ using System.Net;
 using System.IO;
 using HtmlAgilityPack;
 using System.Web.UI.HtmlControls;
+using Multidictionary.Dictionaries;
 
 namespace Multidictionary
 {
@@ -23,9 +24,10 @@ namespace Multidictionary
             string key = TextBoxURL.Text;
             string url = "";
             url = buildUrl(key);
+            //getVandaleSupportedLanguages(url);
             injectVanDaleCss(url);
         }
-        
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             string key = TextBoxURL.Text;
@@ -75,6 +77,15 @@ namespace Multidictionary
             }
         }
 
+        protected void languagesDataSource_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+        {
 
+        }
+        protected void languagesDataSource_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
+        {
+            VanDale myDictionary = new VanDale(dictionaryUrl);
+            // set ods object
+            e.ObjectInstance = myDictionary;
+        }
     }
 }
