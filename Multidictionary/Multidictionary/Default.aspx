@@ -13,13 +13,14 @@
             Enter URL and get contents of the page</h3>
         <%--<asp:textbox id="TextBoxURL" runat="server" height="20px" width="250px" text="http://www.vandale.nl/opzoeken?pattern=kat&lang=nn">--%>
         <asp:textbox id="TextBoxURL" runat="server" height="20px" width="250px" text="kat">
-        </asp:textbox><asp:dropdownlist runat="server" datasourceid="languagesDataSource"
-            datatextfield="value" datavaluefield="key"></asp:dropdownlist>
+        </asp:textbox>
+        <asp:dropdownlist runat="server" datasourceid="languagesDataSource"
+            datatextfield="name" datavaluefield="id" ID="LanguageDropDown"></asp:dropdownlist>
         <asp:button id="Button1" runat="server" text="Get Contents" onclick="Button1_Click" />
         <br />
         <asp:literal runat="server" id="resultpanel"></asp:literal>
     </div>
-    <asp:objectdatasource id="languagesDataSource" runat="server" onselecting="languagesDataSource_Selecting"
+    <asp:objectdatasource id="languagesDataSource" runat="server" 
         OnObjectCreating="languagesDataSource_ObjectCreating" selectmethod="getLanguages" typename="Multidictionary.Dictionaries.VanDale">
     </asp:objectdatasource>
     </form>
