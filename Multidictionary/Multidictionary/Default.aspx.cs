@@ -13,15 +13,38 @@ namespace Multidictionary
 {
     public partial class Default : System.Web.UI.Page
     {
-        private string dictionaryUrl = "http://www.vandale.nl";
+        private string dictionaryUrl = "http://www.vandale.nl/";
+        private string dictionaryQueryString = "opzoeken?pattern=~&lang=nn";
         private IEnumerable<HtmlNode> csslink;
 
-
-       
         protected void Page_Load(object sender, EventArgs e)
         {
             //your code
-            string url = TextBoxURL.Text;
+            string key = TextBoxURL.Text;
+            string url = "";
+            url = buildUrl(key);
+            injectVanDaleCss(url);
+        }
+        
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string key = TextBoxURL.Text;
+            string url = "";
+            url = buildUrl(key);
+            injectVanDaleResult(url);
+
+        }
+
+        private string buildUrl(string key)
+        {
+            string outp = "";
+            outp += dictionaryUrl;
+            outp += (dictionaryQueryString.Replace("~", key));
+            return outp;
+        }
+
+        private void injectVanDaleCss(string url)
+        {
             var webGet = new HtmlWeb();
             var document = webGet.Load(url);
             csslink = (from el in document.DocumentNode.SelectNodes("//link[@type='text/css']")
@@ -38,9 +61,9 @@ namespace Multidictionary
                 hdr.Controls.Add(cssLink);
             }
         }
-        protected void Button1_Click(object sender, EventArgs e)
+
+        private void injectVanDaleResult(string url)
         {
-            string url = TextBoxURL.Text;
             var webGet = new HtmlWeb();
             var document = webGet.Load(url);
             var definitieDiv = from el in document.DocumentNode.Descendants()
@@ -50,7 +73,8 @@ namespace Multidictionary
             {
                 resultpanel.Text = definitieDiv.FirstOrDefault().OuterHtml;
             }
-
         }
+
+
     }
 }

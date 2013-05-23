@@ -11,7 +11,8 @@
     <div>
         <h3>
             Enter URL and get contents of the page</h3>
-        <asp:textbox id="TextBoxURL" runat="server" height="20px" width="250px" text="http://www.vandale.nl/opzoeken?pattern=kat&lang=nn">
+        <%--<asp:textbox id="TextBoxURL" runat="server" height="20px" width="250px" text="http://www.vandale.nl/opzoeken?pattern=kat&lang=nn">--%>
+        <asp:textbox id="TextBoxURL" runat="server" height="20px" width="250px" text="kat">
         </asp:textbox>
         <asp:button id="Button1" runat="server" text="Get Contents" onclick="Button1_Click" />
         <br />
